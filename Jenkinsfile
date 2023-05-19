@@ -15,5 +15,12 @@ pipeline {
         """
       }
     }
+    stage("show") {
+      steps {
+        sh """
+          docker images
+        """
+      }
+    }
   }
 }
