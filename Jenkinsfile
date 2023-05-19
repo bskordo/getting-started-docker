@@ -7,7 +7,7 @@ stages {
 
     stage('Scanning Image') {
         steps {
-            sysdigImageScan engineCredentialsId: 'sysdig-secure-api-credentials', imageName: "hello_there:latest"
+            sysdigImageScan engineCredentialsId: 'sysdig-secure-api-credentials', imageName: hello_there:latest
         }
     }
 }
