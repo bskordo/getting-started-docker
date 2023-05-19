@@ -4,7 +4,7 @@ pipeline {
     stage("build") {
       steps {
         sh """
-          docker build -t hello_there .
+          which docker
         """
       }
     }
