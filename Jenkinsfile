@@ -4,7 +4,7 @@ pipeline {
     stage("build") {
       steps {
         sh """
-          which docker
+          docker verion
         """
       }
     }
