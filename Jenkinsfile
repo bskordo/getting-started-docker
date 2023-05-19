@@ -1,26 +1,13 @@
-pipeline {
-  agent any
-  stages {
-    stage("build") {
-      steps {
-        sh """
-          docker build -t hello_there .
-        """
-      }
+stages {
+    stage('Checkout') {
+        steps {
+            checkout scm
+        }
     }
-    stage("run") {
-      steps {
-        sh """
-          docker run --rm hello_there
-        """
-      }
+
+    stage('Scanning Image') {
+        steps {
+            sysdigImageScan engineCredentialsId: 'sysdig-secure-api-credentials', imageName: "hello_there:latest"
+        }
     }
-    stage("show") {
-      steps {
-        sh """
-          docker images
-        """
-      }
-    }
-  }
 }
