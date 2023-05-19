@@ -4,7 +4,7 @@ pipeline {
     stage("build") {
       steps {
         sh """
-          docker verion
+          docker build -t hello_there .
         """
       }
     }
