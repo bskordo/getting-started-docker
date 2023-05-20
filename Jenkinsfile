@@ -29,12 +29,12 @@ pipeline {
                 script {
                     def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                     def branchName = 'new-branch'
-                    sh "echo $GIT_USERNAME"
+                    //sh "echo $GIT_USERNAME"
         
                    // sh 'git push --tags'
                     
-                    sh "git checkout -b ${branchName}"
-                    sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.git new-branch"
+                    //sh "git checkout -b ${branchName}"
+                    //sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.git new-branch"
                     //sh "git push origin ${branchName}"
                 }
             }
