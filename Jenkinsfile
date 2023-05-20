@@ -15,16 +15,9 @@ pipeline {
                     ]) {
                         // Set the Git credentials
                         sh "git config user.name ${env.GIT_USERNAME}"
-                        sh "git config user.email ${env.GIT_USERNAME}@example.com"
+                        sh "git config user.email samat.stuyd@gmail.com"
                         
-                        // Add the changes to the Git index
-                        sh 'git add .'
-                        
-                        // Commit the changes with a commit message
-                        sh 'git commit -m "Commit message"'
-                        
-                        // Push the changes to the remote repository
-                        sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/your/repository.git master"
+                
                     }
                 }
             }
