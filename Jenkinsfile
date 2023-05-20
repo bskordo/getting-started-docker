@@ -29,7 +29,7 @@ pipeline {
                     def branchName = 'new-branch'
                     
         
-                    sh 'git push --tags'
+                   // sh 'git push --tags'
                     
                     sh "git checkout -b ${branchName}"
                     sh "git push origin ${branchName}"
