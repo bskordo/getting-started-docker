@@ -27,7 +27,7 @@ pipeline {
                 script {
                     def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                     def branchName = 'new-branch'
-                    
+                    sh "echo $GIT_USERNAME"
         
                    // sh 'git push --tags'
                     
