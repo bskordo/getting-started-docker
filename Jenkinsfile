@@ -26,11 +26,30 @@ pipeline {
                 }
             }
         }
+          stage('Check for New Commit') {
+            steps {
+                script {
+                    def lastTag = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim()
+                    def currentTag = lastTag ?: 'v0.0'
+                    def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+                    
+                    if (lastTag) {
+                        sh "git log --oneline ${lastTag}..HEAD"
+                        currentTag = incrementTag(lastTag)
+                    } else {
+                        sh 'git log --oneline'
+                    }
+                    
+                    sh "git tag -a ${currentTag} -m 'Tagging commit ${commitHash}'"
+                    sh 'git push --tags'
+                }
+            }
+        }
         stage('Create Tag and Branch') {
             steps {
                 script {
-                    def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-                    def branchName = 'new-branch'
+                   // def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+                   // def branchName = 'new-branch'
                     //sh "echo $GIT_USERNAME"
         
                    // sh 'git push --tags'
