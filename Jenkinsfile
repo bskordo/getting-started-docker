@@ -32,7 +32,7 @@ pipeline {
                    // sh 'git push --tags'
                     
                     sh "git checkout  ${branchName}"
-                    sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/bskordo/getting-started-docker.gi new-branch"
+                    sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.gi new-branch"
                     //sh "git push origin ${branchName}"
                 }
             }
