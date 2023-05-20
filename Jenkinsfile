@@ -15,7 +15,7 @@ pipeline {
                     ]) {
                         // Set the Git credentials
                         sh "git config user.name ${env.GIT_USERNAME}"
-                        sh "git config user.email samat.stuyd@gmail.com"
+                        sh "git config user.email samat.study@gmail.com"
                         
                 
                     }
