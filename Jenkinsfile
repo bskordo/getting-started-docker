@@ -16,6 +16,8 @@ pipeline {
                         // Set the Git credentials
                         //sh "git config user.name ${env.GIT_USERNAME}"
                         //sh "git config user.email samat.study@gmail.com"
+                        def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+                        def branchName = 'new-branch'
                         sh " echo $GIT_USERNAME"
                         sh "git checkout -b ${branchName}"
                         sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.git new-branch"
