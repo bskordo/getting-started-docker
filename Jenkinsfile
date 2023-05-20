@@ -8,6 +8,23 @@ pipeline {
             }
         }
         
+
+        stage('Commit and Push') {
+            steps {
+                script {
+                    withCredentials([
+                        usernamePassword(credentialsId: 'GitUser', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')
+                    ]) {
+                        // Set the Git credentials
+                        sh "git config user.name ${env.GIT_USERNAME}"
+                        sh "git config user.email samat.study"
+                        
+                }
+            }
+        }
+
+
+
         stage('Create Tag and Branch') {
             steps {
                 script {
