@@ -17,6 +17,8 @@ pipeline {
                         //sh "git config user.name ${env.GIT_USERNAME}"
                         //sh "git config user.email samat.study@gmail.com"
                         sh " echo $GIT_USERNAME"
+                        sh "git checkout -b ${branchName}"
+                        sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.git new-branch"
                 
                     }
                 }
@@ -31,8 +33,8 @@ pipeline {
         
                    // sh 'git push --tags'
                     
-                    sh "git checkout  ${branchName}"
-                    sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.gi new-branch"
+                    sh "git checkout -b ${branchName}"
+                    sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/bskordo/getting-started-docker.git new-branch"
                     //sh "git push origin ${branchName}"
                 }
             }
