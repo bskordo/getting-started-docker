@@ -7,24 +7,28 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/bskordo/getting-started-docker.git'
             }
         }
-        
-
         stage('Commit and Push') {
             steps {
                 script {
                     withCredentials([
-                        usernamePassword(credentialsId: 'GitUser', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')
+                        usernamePassword(credentialsId: 'git-credentials', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')
                     ]) {
                         // Set the Git credentials
                         sh "git config user.name ${env.GIT_USERNAME}"
-                        sh "git config user.email samat.study"
+                        sh "git config user.email ${env.GIT_USERNAME}@example.com"
                         
+                        // Add the changes to the Git index
+                        sh 'git add .'
+                        
+                        // Commit the changes with a commit message
+                        sh 'git commit -m "Commit message"'
+                        
+                        // Push the changes to the remote repository
+                        sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/your/repository.git master"
+                    }
                 }
             }
         }
-
-
-
         stage('Create Tag and Branch') {
             steps {
                 script {
